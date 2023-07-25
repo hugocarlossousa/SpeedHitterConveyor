@@ -128,7 +128,7 @@ class Tela1(MDScreen):
             moduleRpmSpeed= float(r3.replace(',','.'))
 
             #PROCESAMENTO
-            #Caucula o rendimento aproximado da gasolina "gambirra"
+            #Caucula o RPM de Saida "gambirra"
             vf = moduleRpmSpeed/conveyorSpeed * targetSpeed
 
             #exporta os valores obtidos durante o calculo para o label resp
