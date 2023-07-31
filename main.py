@@ -14,79 +14,79 @@ KV = '''
     name: 't1'
 
     MDFloatLayout:
-        md_bg_color:('#191970')
+        md_bg_color:('#DCDCDC')
                 
         MDTopAppBar:                
             title: "SPEED HITTER CONVEYOR"
             right_action_items: [["close", lambda x: root.fechar()]]
-            md_bg_color: ("ff8C00")
+            md_bg_color: ("#eb640c")
             pos_hint: {'top': True}
         
         Image:
             source:"Vlogo.png"
-            size_hint_x: 0.195
-            pos_hint: {'center_x': 0.83,'center_y': 0.936}               
+            size_hint_x: 0.288
+            pos_hint: {'center_x': 0.842,'center_y': 0.0275}               
 
         MDTextField:
             id: tf1
-            hint_text: "Conveyor Speed"
+            hint_text: "Conveyor Actual Speed"
             mode: "rectangle"
-            size_hint_x: .60
-            line_color_focus: "white"
+            size_hint_x: .70
+            line_color_focus: "#4682B4"
             line_color_normal: "white"
-            text_color_focus: "orange"
-            hint_text_color_normal:"orange"
-            hint_text_color_focus:"orange"
+            text_color_focus: "#4682B4"
+            hint_text_color_normal:"#eb640c"
+            hint_text_color_focus:"#ff8c00"
             pos_hint: {'center_x': 0.5,'center_y': 0.78}
 
         MDTextField:
             id: tf2
             hint_text: "Target Speed"
             mode: "rectangle"
-            size_hint_x: .60
-            line_color_focus: "white"
+            size_hint_x: .70
+            line_color_focus: "#4682B4"
             line_color_normal: "white"
-            text_color_focus: "orange"
-            hint_text_color_normal:"orange"
-            hint_text_color_focus:"orange"
+            text_color_focus: "#4682B4"
+            hint_text_color_normal:"#eb640c"
+            hint_text_color_focus:"#ff8c00"
             pos_hint: {'center_x': 0.5,'center_y': 0.65}
 
         MDTextField:
             id: tf3
             hint_text: "Seted module RPM"
             mode: "rectangle"
-            size_hint_x: .60
-            line_color_focus: "white"
+            size_hint_x: .70
+            line_color_focus: "#4682B4"
             line_color_normal: "white"
-            text_color_focus: "orange"
-            hint_text_color_normal:"orange"
-            hint_text_color_focus:"orange"
+            text_color_focus: "#4682B4"
+            hint_text_color_normal:"#eb640c"
+            hint_text_color_focus:"ff8c00"
             pos_hint: {'center_x': 0.5,'center_y': 0.52}
 
             
         MDIconButton:
             icon: "eraser"
             theme_icon_color: "Custom"
-            icon_color:("ff8c00")
+            icon_color:("#eb640c")
             icon_size: "45sp"  
-            pos_hint: {'center_x': 0.42,'center_y': 0.40} 
+            pos_hint: {'center_x': 0.40,'center_y': 0.40} 
             on_press:
                 root.limpar()
 
         MDIconButton:
             icon: "check-circle"
             theme_icon_color: "Custom"
-            icon_color:("ff8c00")
+            icon_color:("#eb640c")
             icon_size: "45sp"  
-            pos_hint: {'center_x': 0.58,'center_y': 0.40} 
+            pos_hint: {'center_x': 0.60,'center_y': 0.40} 
             on_press:
                 root.analisar()
 
         MDLabel:
             id: resp 
             text: " "
-            color: 'white'
-            font_size: 45
+            color: '#4682B4'
+            font_size: 40
             halign: 'center'
             pos_hint: {'center_x': 0.5,'center_y': 0.21}
 
@@ -112,7 +112,7 @@ class Tela1(MDScreen):
         #ENTRADAS 
         
         #Popup de Erro
-        self.dialog = MDDialog(title = 'ERRO*', text = 'Por favor!\nInsira um valor válido',
+        self.dialog = MDDialog(title = 'ERROR*', text = 'Invalid Velue!\nPlease, set a new valid value',
                                 buttons = [MDFlatButton(text= 'OK',
                                 on_release = self.liberar)])
 
@@ -128,11 +128,11 @@ class Tela1(MDScreen):
             moduleRpmSpeed= float(r3.replace(',','.'))
 
             #PROCESAMENTO
-            #Caucula o RPM de Saida "gambirra"
+            #Caucula o rendimento aproximado da gasolina "gambirra"
             vf = moduleRpmSpeed/conveyorSpeed * targetSpeed
 
             #exporta os valores obtidos durante o calculo para o label resp
-            self.ids.resp.text = ('SET PARAMETER IN MODULE\n {:0.2f} - RPM'.format(vf))
+            self.ids.resp.text = ('SET THE PARAMETER IN MODULE\n {:0.2f} - RPM'.format(vf))
         except:
             self.dialog.open()
     
